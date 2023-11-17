@@ -4,10 +4,11 @@ import { Router } from './api/router'
 export class App {
 
     server: Server = new Server()
-    router: Router
+    router!: Router
 
     constructor() {
         this.server.setup()
+        this.router = new Router(this.server)
         this.autoExec()
     }
 
@@ -15,8 +16,6 @@ export class App {
 
         const serverStartUpResponse = await this.server.start
         console.log(`[App] Server startup response: ${serverStartUpResponse}`)
-
-        this.router = new Router(this.server)
 
     }
     

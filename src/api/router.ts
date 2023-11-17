@@ -7,11 +7,11 @@ import { endpoint } from '../types/endpoints'
 
 export class Router {
 
-    app: Application
+    server: Server
 
     constructor(server: Server) {
 
-        this.app = server.app
+        this.server = server
 
         log.info('Loading endpoints')
         log.br() 
@@ -20,7 +20,7 @@ export class Router {
             .filter((f: string) => f.endsWith('.js') && !f.startsWith('--'))
             .forEach((n: string) => {
 
-                const point: endpoint = require(`${__dirname}/../endpoints/${n}`)._
+                const point: endpoint = require(`${__dirname}/../endpoints/${n}`).default
 
                 if (!this.validateResponse(point)) return
                 this.validateEndpointType(point, n)
@@ -50,17 +50,18 @@ export class Router {
         switch (method) {
 
             case 'GET':
-                this.app.set(url, (req: Request, res: Response, next: NextFunction) => execute(req, res, next)); break;
+                this.server.app.get(url, (req: Request, res: Response, next: NextFunction) => execute(req, res, next)); break;
 
             case 'POST':
-                this.app.set(url, (req: Request, res: Response, next: NextFunction) => execute(req, res, next)); break;
+                this.server.app.post(url, (req: Request, res: Response, next: NextFunction) => execute(req, res, next)); break;
 
             default: 
                 log.error(`Skipped ${name} file. Invalid endpoint method "${method}"!`); break;
 
         }
 
-        log.success(`Loaded ${method}/${url} [${name}.ts]`)
+        this.server.endpoints.push({ url, method, execute })
+        log.success(`Loaded ${method}${url} [${name.replace('.js', '.ts')}]`)
 
     }
 

@@ -6,6 +6,7 @@ export class Server {
 
     app: Application = ex()
     port: number = 8080
+    endpoints: any[] = []
 
     public setup(): void {
 
