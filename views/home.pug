@@ -1,0 +1,18 @@
+header 
+    link(rel="stylesheet" href="css/style.min.css")
+    link(rel="shortcut icon" type="image/png" href="images/avatar.png")
+    title Mateusz
+
+body 
+
+    head
+        for e in socialmedia
+            container.mediaElement
+                img(href=e.img)
+                a(href=e.url) #{e.name}
+
+    main
+        img(src="images/background.png" alt="")#background
+
+
+footer

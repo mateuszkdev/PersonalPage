@@ -1,3 +1,6 @@
 node_modules/
 build/
 data/
+public/css/*.scss
+public/css/*.min.css
+public/images

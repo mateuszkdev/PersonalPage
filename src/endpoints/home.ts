@@ -8,7 +8,6 @@ export default {
     method: 'GET', type: 'public', endpoint: ['/', '/home'],
     execute(req, res, next) {
 
-        console.log('te')
         res.render('home', { socialmedia, projects })
 
     }
