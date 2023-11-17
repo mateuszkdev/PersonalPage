@@ -12,7 +12,16 @@ body header {
   width: 100%;
 }
 
+body header .headerLeft {
+  display: block;
+  float: left;
+  width: 30%;
+  padding: 20px;
+  font-size: 30px;
+}
+
 body header .btnDiv {
+  width: 30%;
   display: block;
   float: right;
   padding: 20px;
