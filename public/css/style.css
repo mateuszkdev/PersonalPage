@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@200&display=swap");
 body {
   height: 100%;
@@ -6,6 +7,11 @@ body {
   font-size: 20px;
   color: white;
   font-family: 'Poppins', sans-serif;
+}
+
+body .contarinerElement {
+  display: block;
+  float: left;
 }
 
 body header {
@@ -49,13 +55,37 @@ body header .btnDiv .btn:hover {
 }
 
 body main {
-  background: center center/cover no-repeat;
+  width: 100%;
+  height: 90%;
 }
 
-body main #background {
+body main #upper {
+  height: 100%;
+  /* Ustal wysokość */
+  background-image: url("/images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
-  width: 100%;
   animation: mainBackgroundFade 3s ease 0s 1 normal forwards;
+}
+
+body footer {
+  color: #a09e9e;
+  text-align: center;
+  font-size: 17px;
+  padding: 10px;
+  padding-top: 20px;
+  width: 20%;
+  left: 50%;
+  height: 5%;
+  background-color: #232423;
+  border-radius: 20in 20in 0 0;
+  font-weight: bold;
+}
+
+body footer a {
+  color: #6997c2;
 }
 
 @keyframes mainBackgroundFade {
