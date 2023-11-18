@@ -23,6 +23,7 @@ header .headerLeft {
   display: flex;
   font-weight: bold;
   font-size: 30px;
+  text-shadow: 1px 0 10px white;
 }
 
 header .headerRight {
@@ -110,6 +111,18 @@ main #upper .container div {
   width: 50%;
 }
 
+main #upper .container div a {
+  background-color: #16121b;
+  border-radius: 10in;
+}
+
+main #upper .container div #glow {
+  color: #fff;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
 main #upper .containerFull {
   padding: 0 20px 20px 20px;
   display: grid;
@@ -165,6 +178,11 @@ main #upper .containerFull .project .name {
   font-size: 20px;
 }
 
+main #upper #langs {
+  width: 100%;
+  padding: 10%;
+}
+
 main #upper #langs .lang {
   display: inline-block;
 }
@@ -177,8 +195,9 @@ main #upper #langs .lang a {
 }
 
 main #upper #langs .lang a:hover {
-  color: #43739f;
+  color: white;
   transition: color 1s;
+  text-shadow: 1px 0 10px white;
 }
 
 footer {
@@ -222,6 +241,15 @@ footer a:hover {
   }
   main #upper .containerFull {
     grid-template-columns: 1fr;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6;
   }
 }
 
