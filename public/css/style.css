@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@200&display=swap");
 body {
   height: 100%;
@@ -9,83 +8,123 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-body .contarinerElement {
-  display: block;
-  float: left;
-}
-
 body header {
-  width: 100%;
+  position: fixed;
+  top: 25px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 50;
+  width: 100vw;
 }
 
 body header .headerLeft {
-  display: block;
-  float: left;
-  width: 30%;
-  padding: 20px;
+  display: flex;
+  font-weight: bold;
   font-size: 30px;
 }
 
-body header .btnDiv {
-  width: 30%;
-  display: block;
-  float: right;
-  padding: 20px;
+body header .headerRight {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
 }
 
-body header .btnDiv .btn {
+body header .headerRight .link {
+  background-color: #6997c2;
+  border-radius: 15px;
+  padding: 6px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5 linear;
+}
+
+body header .headerRight .link:hover {
+  background-color: #486e91;
+}
+
+body header .headerRight a {
+  font-size: 18px;
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s linear;
   text-decoration: none;
-  margin: 10px;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background-color: #232423;
-  padding: 0.3em 1.2em;
-  border-radius: 30px;
-  font-size: 1.3rem;
-  font-weight: 550;
-  color: #ffffff;
-  background-size: 100% 100%;
-  box-shadow: 0 0 0 4px #232423 inset;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
-body header .btnDiv .btn:hover {
-  background-image: linear-gradient(55deg, transparent 10%, #161616 10% 20%, transparent 20% 30%, #161616 30% 40%, transparent 40% 50%, #161616 50% 60%, transparent 60% 70%, #161616 70% 80%, transparent 80% 90%, #161616 90% 100%);
-  animation: background 3s linear infinite;
-}
-
-body main {
+body header .headerRight a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 90%;
+  height: 2px;
+  content: '';
+  transition: transform 0.25s ease-out;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  background-color: white;
 }
 
-body main #upper {
+body header .headerRight a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+main {
+  display: block;
+  width: 100%;
+  z-index: 0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+main #upper {
+  padding-top: 120px;
   height: 100%;
-  /* Ustal wysokość */
   background-image: url("/images/background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
   animation: mainBackgroundFade 3s ease 0s 1 normal forwards;
+  z-index: 0;
 }
 
-body footer {
-  color: #a09e9e;
-  text-align: center;
-  font-size: 17px;
-  padding: 10px;
-  padding-top: 20px;
-  width: 20%;
+footer {
+  position: fixed;
+  bottom: 0;
   left: 50%;
-  height: 5%;
+  transform: translate(-50%, 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a09e9e;
+  font-size: 17px;
+  padding: 30px 30px 10px 30px;
+  left: 50%;
   background-color: #232423;
   border-radius: 20in 20in 0 0;
   font-weight: bold;
+  z-index: 49;
+  gap: 5px;
 }
 
-body footer a {
+footer a {
   color: #6997c2;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+footer a:hover {
+  color: #315d86;
 }
 
 @keyframes mainBackgroundFade {

@@ -1,26 +1,31 @@
-head 
+head
+    link(rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css")
+    link(rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css")
     link(rel="stylesheet" href="css/style.css")
     link(rel="shortcut icon" type="image/png" href="images/avatar.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     title Mateusz
 
-body 
-
-    header.contarinerElement
-
+body
+    header
         .headerLeft 
             a Personal Page
 
-        .btnDiv
-            a(href="/").btn Github
-            a(href="/").btn Discord
-            a(href="/").btn Discord
+        .headerRight
+            .link
+                a(href="https://github.com/mateuszkdev" target="_blank") 
+                    i(class="fab fa-github")
+                    | Github
+            .link
+                a(href="https://discord.com/users/395266229436153868" target="_blank")
+                    i(class="fab fa-discord")
+                    | Discord
 
-    main.contarinerElement
-    
+    main
         #upper
-
             | Ssdsd
 
-    footer.contarinerElement
-
-        | <a> Mateusz Kalaga </a> COPYRIGHT <a> 2023 </a>
+    footer
+        a Mateusz Kalaga
+        | COPYRIGHT
+        | 2023
