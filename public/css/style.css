@@ -8,7 +8,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-body header {
+header {
   position: fixed;
   top: 25px;
   left: 0px;
@@ -19,19 +19,19 @@ body header {
   width: 100vw;
 }
 
-body header .headerLeft {
+header .headerLeft {
   display: flex;
   font-weight: bold;
   font-size: 30px;
 }
 
-body header .headerRight {
+header .headerRight {
   display: flex;
   justify-content: space-around;
   gap: 15px;
 }
 
-body header .headerRight .link {
+header .headerRight .link {
   background-color: #6997c2;
   border-radius: 15px;
   padding: 6px 9px;
@@ -41,11 +41,11 @@ body header .headerRight .link {
   transition: all 0.5 linear;
 }
 
-body header .headerRight .link:hover {
+header .headerRight .link:hover {
   background-color: #486e91;
 }
 
-body header .headerRight a {
+header .headerRight a {
   font-size: 18px;
   font-weight: 900;
   position: relative;
@@ -59,7 +59,7 @@ body header .headerRight a {
   gap: 5px;
 }
 
-body header .headerRight a:after {
+header .headerRight a:after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -72,7 +72,7 @@ body header .headerRight a:after {
   background-color: white;
 }
 
-body header .headerRight a:hover:after {
+header .headerRight a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
@@ -87,7 +87,6 @@ main {
 }
 
 main #upper {
-  padding-top: 120px;
   height: 100%;
   background-image: url("/images/background.png");
   background-size: cover;
@@ -98,20 +97,95 @@ main #upper {
   z-index: 0;
 }
 
+main #upper .container {
+  padding: 120px 20px 0 20px;
+  display: flex;
+  gap: 90px;
+  text-align: center;
+}
+
+main #upper .containerFull {
+  padding: 0 20px 20px 20px;
+  display: grid;
+  width: 100%;
+  gap: 20px 100px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+main #upper .containerFull .projectsTitle {
+  color: #8fc7fa;
+  font-size: 40px;
+}
+
+main #upper .containerFull .projects-container {
+  color: #b7d0e8;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+main #upper .containerFull .projects-container .prjects-title-container {
+  height: 10%;
+}
+
+main #upper .containerFull .project {
+  text-align: center;
+}
+
+main #upper .containerFull .project .project-item {
+  background-color: #16121b;
+  box-shadow: 2px 2px #392946;
+  border-radius: 10mm;
+  padding: 20px;
+  margin: 20px;
+}
+
+main #upper .containerFull .project .project-item .link {
+  color: #b7d0e8;
+  padding: 5px;
+}
+
+main #upper .containerFull .project .archived {
+  background-color: #392946;
+  color: white;
+  text-align: left;
+  padding: 5px;
+  border-radius: 20mm;
+  width: 70%;
+}
+
+main #upper .containerFull .project .name {
+  color: #8fc7fa;
+  font-size: 20px;
+}
+
+main #upper #langs .lang {
+  display: inline-block;
+}
+
+main #upper #langs .lang a {
+  margin: 10px;
+  color: #8fc7fa;
+  text-decoration: none;
+  transition: color 1s;
+}
+
+main #upper #langs .lang a:hover {
+  color: #43739f;
+  transition: color 1s;
+}
+
 footer {
   position: fixed;
   bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #a09e9e;
   font-size: 17px;
-  padding: 30px 30px 10px 30px;
-  left: 50%;
+  padding: 20px 15px;
   background-color: #232423;
-  border-radius: 20in 20in 0 0;
+  border-radius: 0 20in 20in 0;
   font-weight: bold;
   z-index: 49;
   gap: 5px;
@@ -133,5 +207,27 @@ footer a:hover {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  main #upper .container {
+    flex-direction: column;
+  }
+  main #upper .containerFull {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  footer {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    border-radius: 20in 20in 0 0;
   }
 }

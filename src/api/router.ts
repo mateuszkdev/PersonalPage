@@ -3,7 +3,7 @@ import { Application } from 'express'
 import { Server } from './server'
 import log from '../utils/routerLogs'
 import { readdirSync } from 'fs'
-import { endpoint } from '../types/endpoints'
+import { Endpoint } from '../types/endpoints'
 
 export class Router {
 
@@ -14,13 +14,13 @@ export class Router {
         this.server = server
 
         log.info('Loading endpoints')
-        log.br() 
+        log.br()
 
         readdirSync(`${__dirname}/../endpoints`)
             .filter((f: string) => f.endsWith('.js') && !f.startsWith('--'))
             .forEach((n: string) => {
 
-                const point: endpoint = require(`${__dirname}/../endpoints/${n}`).default
+                const point: Endpoint = require(`${__dirname}/../endpoints/${n}`).default
 
                 if (!this.validateResponse(point)) return
                 this.validateEndpointType(point, n)
@@ -32,30 +32,37 @@ export class Router {
 
     }
 
-    private validateResponse(point: endpoint): boolean {
+    private validateResponse(point: Endpoint): boolean {
 
         return !(!point.method || !point.endpoint || !point.execute || !point.type)
 
     }
 
-    private validateEndpointType(point: endpoint, fileName: string): void {
+    private validateEndpointType(point: Endpoint, fileName: string): void {
 
         if (typeof point.endpoint === 'string') return this.setter(point.endpoint, point.execute, fileName, point.method)
         else if (Array.isArray(point.endpoint)) return point.endpoint.forEach((e: string) => this.setter(e, point.execute, fileName, point.method))
 
     }
 
-    private setter(url: string, execute: endpoint['execute'], name: string, method: endpoint['method']): void {
+    private setter(url: string, execute: Endpoint['execute'], name: string, method: Endpoint['method']): void {
 
         switch (method) {
 
             case 'GET':
-                this.server.app.get(url, (req: Request, res: Response, next: NextFunction) => execute(req, res, next)); break;
+                this.server.app.get(url, async (req: Request, res: Response, next: NextFunction) => {
+                    const response = await execute({ req, res, next })
+
+                    if (response.render) {
+                        res.render(response.render.file, response.render.data)
+                    }
+                });
+                break;
 
             case 'POST':
-                this.server.app.post(url, (req: Request, res: Response, next: NextFunction) => execute(req, res, next)); break;
+                this.server.app.post(url, (req: Request, res: Response, next: NextFunction) => execute({ req, res, next })); break;
 
-            default: 
+            default:
                 log.error(`Skipped ${name} file. Invalid endpoint method "${method}"!`); break;
 
         }

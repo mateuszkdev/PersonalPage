@@ -23,8 +23,40 @@ body
 
     main
         #upper
-            | Ssdsd
+            .container
+                div 
+                    | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe minima repudiandae provident modi alias, consequatur itaque expedita, libero quas fugit asperiores consectetur a earum sit fuga corporis voluptatem voluptatum dignissimos?
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia inventore odio doloribus tenetur laboriosam earum molestias excepturi, suscipit repellat voluptas dicta? Accusamus modi quisquam ipsam quas molestiae deleniti cumque.
+                div
+                    #langs
+                        for lang of languages
+                            p.lang
+                                a(href=lang.url target="_blank") #{lang.name}
 
+            .containerFull
+                for pr of projects
+                    .project
+                        .project-item
+                            if pr.archived
+                                a.archived Archived
+                            a.name #{pr.name} <br> <br>
+                            if pr.link
+                                i(class="fab fa-"+ pr.link.platform.toLowerCase())
+                                a.link(href=pr.link.link target="_blank") #{pr.link.platform}
+                            if pr.authors
+                                p.author By: 
+                                    for member of pr.authors
+                                        | #{member}     
+                            p.version v.#{pr.currentVersion}
+                                                                                                                                                                                
     footer
         a Mateusz Kalaga
         | COPYRIGHT

@@ -1,15 +1,20 @@
-import { endpoint } from '../types/endpoints'
+import { Endpoint } from '../types/endpoints'
 
-const { socialmedia } = require('../../data/media.json')
+const { languages } = require('../../data/languages.json')
 const { projects } = require('../../data/projects.json')
 
 export default {
 
     method: 'GET', type: 'public', endpoint: ['/', '/home'],
-    execute(req, res, next) {
+    async execute() {
 
-        res.render('home', { socialmedia, projects })
+        return {
+            render: {
+                file: "home",
+                data: { languages, projects }
+            }
+        }
 
     }
 
-} as endpoint
+} as Endpoint
