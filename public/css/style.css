@@ -102,6 +102,12 @@ main #upper .container {
   display: flex;
   gap: 90px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+main #upper .container div {
+  width: 50%;
 }
 
 main #upper .containerFull {
